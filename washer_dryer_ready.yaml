@@ -1,0 +1,16 @@
+blueprint:
+  name: Washer Dryer Ready
+  description: Tells when washer dryer done
+  domain: automation
+	
+trigger:
+  - platform: numeric_state
+  entity_id: sensor.laundry_11_1min
+  action:
+  - service: >
+  {% if trigger.to_state.state < 5 %}
+   notify.mobile_app_iphonedee
+  data:
+  title: Laundry Started	
+  message: Laundry Started
+  {% endif %}
