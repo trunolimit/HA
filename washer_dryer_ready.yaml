@@ -59,7 +59,7 @@ blueprint:
       name: Actions
       description: Actions (e.g. pushing a notification, TTS announcement, ...)
       selector:
-      action:{%%}
+       action:{}
           service: notify.mobile_app_iphonedee
           data:
            message: Laundry Started }
