@@ -6,8 +6,8 @@ blueprint:
       washing_maching_is_running:
         friendly_name: Washing Machine Is Running
         value_template: >-
-          {% if states('sensor.washing_machine_power_switch_power')|float > 3 %}
-            true
+          {% if states('sensor.laundry_11_1min')|float < 5 %}
+               notify.mobile_app_iphonedee
           {% else %}
             false
           {% endif %} 
