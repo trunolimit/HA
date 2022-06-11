@@ -1,9 +1,10 @@
 blueprint:
-  name: Laundry Started
-  description: Notifies whne laundry Starts
+  name: Appliance has finished
+  description: Do something when an appliance (like a washing machine or dishwasher)
+    has finished as detected by a power sensor.
   domain: automation
   input:
-    sensor.laundry_11_1min:
+    power_sensor:
       name: Power Sensor
       description: Power sensor entity (e.g. from a smart plug device).
       selector:
@@ -16,7 +17,7 @@ blueprint:
       selector:
         number:
           min: 1.0
-          max: 2000.0
+          max: 100.0
           unit_of_measurement: W
           mode: slider
           step: 1.0
@@ -59,9 +60,7 @@ blueprint:
       name: Actions
       description: Actions (e.g. pushing a notification, TTS announcement, ...)
       selector:
-       action:{}
-          - service >
-            notify.mobile_app_iphonedee
+        action: {}
     pre_actions:
       name: Actions
       description: Actions when starting threshhold is crossed
@@ -70,7 +69,7 @@ blueprint:
   source_url: https://gist.github.com/sbyx/6d8344d3575c9865657ac51915684696
 trigger:
 - platform: numeric_state
-  entity_id: !input 'sensor.laundry_11_1min'
+  entity_id: !input 'power_sensor'
   for:
     minutes: !input 'starting_hysteresis'
   above: !input 'starting_threshold'
@@ -80,7 +79,7 @@ action:
   default: !input 'pre_actions'
 - wait_for_trigger:
   - platform: numeric_state
-    entity_id: !input 'sensor.laundry_11_1min'
+    entity_id: !input 'power_sensor'
     below: !input 'finishing_threshold'
     for:
       minutes: !input 'finishing_hysteresis'
