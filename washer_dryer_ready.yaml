@@ -62,7 +62,6 @@ blueprint:
        action:{}
           - service >
             notify.mobile_app_iphonedee
-          data:
            message: Laundry Started }
     pre_actions:
       name: Actions
