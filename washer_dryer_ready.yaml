@@ -2,7 +2,6 @@ blueprint:
   name: Washer Dryer Ready
   description: Tells when washer dryer done
   domain: automation
-	
 trigger:
   - platform: numeric_state
   entity_id: sensor.laundry_11_1min
