@@ -59,11 +59,11 @@ blueprint:
       name: Actions
       description: Actions (e.g. pushing a notification, TTS announcement, ...)
       selector:
-        action: {
+        action: 
           service: notify.mobile_app_iphonedee
           data:
            message: Laundry Started
-        }
+        
     pre_actions:
       name: Actions
       description: Actions when starting threshhold is crossed
