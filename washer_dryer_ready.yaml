@@ -62,7 +62,7 @@ blueprint:
        action:{}
           - service >
             notify.mobile_app_iphonedee
-           message: Laundry Started
+            message: Laundry Started
     pre_actions:
       name: Actions
       description: Actions when starting threshhold is crossed
