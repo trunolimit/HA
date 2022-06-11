@@ -60,7 +60,8 @@ blueprint:
       description: Actions (e.g. pushing a notification, TTS announcement, ...)
       selector:
        action:{}
-          service: notify.mobile_app_iphonedee
+          - service >
+            notify.mobile_app_iphonedee
           data:
            message: Laundry Started }
     pre_actions:
